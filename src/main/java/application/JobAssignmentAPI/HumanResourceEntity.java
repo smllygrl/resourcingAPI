@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class HumanResource {
+public class HumanResourceEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
@@ -14,10 +14,12 @@ public class HumanResource {
 	private String lastName;
 //	private ArrayOfJobObjects jobs;
 	
-	public HumanResource(String firstName, String lastName) {
+	public HumanResourceEntity(String firstName, String lastName) {
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 	}
+	
+	public HumanResourceEntity() {}
 	
 	public Long getId() {
 		return id;
@@ -27,8 +29,6 @@ public class HumanResource {
 		this.id = id;
 	}
 	
-	public HumanResource() {}
-
 	public String getFirstName() {
 		return firstName;
 	}

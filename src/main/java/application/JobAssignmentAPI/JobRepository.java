@@ -2,6 +2,6 @@ package application.JobAssignmentAPI;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface HumanResourceRepository extends JpaRepository<HumanResourceEntity, Long>{
+public interface JobRepository extends JpaRepository<JobEntity, Long> {
 
 }

@@ -14,12 +14,12 @@ public class HumanResourceService {
 	@Autowired
 	private HumanResourceRepository repository;
 	
-	public List<HumanResource> all() { 
+	public List<HumanResourceEntity> all() { 
 		return repository.findAll();
 	}
 	
 	public void create(HumanResourceDTO humanResource) {
-		HumanResource human = new HumanResource(humanResource.getFirstName(), humanResource.getLastName());
+		HumanResourceEntity human = new HumanResourceEntity(humanResource.getFirstName(), humanResource.getLastName());
 		repository.save(human);
 	}
 

@@ -1,7 +1,5 @@
 package application.JobAssignmentAPI;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,20 +12,22 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/resources")
-public class HumanResourceController {
+@RequestMapping(value = "/jobs")
+public class JobController {
 	@Autowired
-	private HumanResourceService humanResourceService;
+	private JobService jobService;
 	
 	@GetMapping
-	public List<HumanResourceEntity> getHumanResources() {
-		return humanResourceService.all();
+	public java.util.List<JobEntity> getJobs() {
+		return jobService.all();
 	}
 	
 	@PostMapping()
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public void saveHumanResource(@Valid @RequestBody HumanResourceDTO humanResource) {
-		humanResourceService.create(humanResource);
+	public void saveJob(@Valid @RequestBody JobDTO job) {
+		jobService.create(job);
 	}
+	
+	
 
 }
