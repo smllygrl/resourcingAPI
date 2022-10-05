@@ -7,7 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import application.JobAssignmentAPI.DTOs.JobDTO;
+import application.JobAssignmentAPI.DTOs.CreateJobDTO;
 import application.JobAssignmentAPI.Entities.JobEntity;
 import application.JobAssignmentAPI.Repositories.JobRepository;
 
@@ -26,7 +26,7 @@ public class JobService {
 		return repository.findById(id);
 	}
 	
-	public void create (JobDTO job) {
+	public void create (CreateJobDTO job) {
 		JobEntity newJob = new JobEntity(job.getDescription(), job.getStartDate(), job.getEndDate());
 		repository.save(newJob);
 	}

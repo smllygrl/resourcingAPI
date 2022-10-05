@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import application.JobAssignmentAPI.DTOs.JobDTO;
+import application.JobAssignmentAPI.DTOs.CreateJobDTO;
+import application.JobAssignmentAPI.Entities.HumanResourceEntity;
 import application.JobAssignmentAPI.Entities.JobEntity;
 import application.JobAssignmentAPI.Services.JobService;
 
@@ -44,9 +46,29 @@ public class JobController {
 	// Creates a job
 	@PostMapping()
 	@ResponseStatus(value = HttpStatus.CREATED)
-	public void saveJob(@Valid @RequestBody JobDTO job) {
+	public void saveJob(@Valid @RequestBody CreateJobDTO job) {
 		jobService.create(job);
 	}
+	
+	// PATCH /jobs/{id}
+	// Assigns a temp to a job if temp not busy
+	//	@PatchMapping("/{id}")
+	//	@ResponseStatus(value = HttpStatus.ACCEPTED)
+	//	public void assignJob(@PathVariable Long id, HumanResourceEntity resource) {
+	// get resource available period/s
+	// if resource not available during job period
+	// throw humanResourceBusy exception
+	// else
+	// job.isAssigned = resource;
+	
+	
+	//	GET /jobs?assigned={true|false}
+	// returns list of jobs without an assigned worker	
+	// LOGIC
+	// return list of allJobs where isAssigned = null or false or whatever
+	
+	}
+	
 	
 	
 

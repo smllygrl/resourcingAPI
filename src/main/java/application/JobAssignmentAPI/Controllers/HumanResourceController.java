@@ -43,12 +43,19 @@ public class HumanResourceController {
 		
 	}
 	
-	// POST / resources
+	// POST /resources
 	// Create a temp
 	@PostMapping()
 	@ResponseStatus(value = HttpStatus.CREATED)
 	public void saveHumanResource(@Valid @RequestBody HumanResourceDTO humanResource) {
 		humanResourceService.create(humanResource);
 	}
+	
+	// @Query (value = "SELECT resource FROM resources")
+	// GET /resources?jobId={jobId}
+	// List all available resources for a given period of time
+	// getAllAvailble
+	// humanResourceService.allResources()
+	// 
 
 }

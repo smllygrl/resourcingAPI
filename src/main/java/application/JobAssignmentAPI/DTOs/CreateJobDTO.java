@@ -2,7 +2,7 @@ package application.JobAssignmentAPI.DTOs;
 
 import javax.validation.constraints.NotNull;
 
-public class JobDTO {
+public class CreateJobDTO {
 	private String description;
 	
 	@NotNull

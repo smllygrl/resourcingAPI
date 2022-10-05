@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import application.JobAssignmentAPI.DTOs.HumanResourceDTO;
 import application.JobAssignmentAPI.Entities.HumanResourceEntity;
+import application.JobAssignmentAPI.Entities.JobEntity;
 import application.JobAssignmentAPI.Repositories.HumanResourceRepository;
 
 import java.util.List;
@@ -33,5 +34,21 @@ public class HumanResourceService {
 		HumanResourceEntity human = new HumanResourceEntity(humanResource.getFirstName(), humanResource.getLastName());
 		repository.save(human);
 	}
+	
+//	public boolean isAvailable(JobEntity newJob, HumanResource human) {
+// 		if human.jobs = null YES
+//		Else
+//		find total number of assignedJobs	
+//  	get dateRange of assignedJobs
+//  	get dateRange of newJob 
+// 			
+	
+	// public ArrayList<HumanResourceEntity> allAvailable (JobEntity job) {
+	// allResource = List
+	// availableResources = List
+	// loop through resources and see if available
+	// if yes, push to available resources
+	// return availableResources;
+	
 
 }
