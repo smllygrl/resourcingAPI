@@ -1,4 +1,4 @@
-package application.JobAssignmentAPI;
+package application.JobAssignmentAPI.Entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
