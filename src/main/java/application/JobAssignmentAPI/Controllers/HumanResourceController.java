@@ -36,7 +36,7 @@ public class HumanResourceController {
 	// GET /resources/id
 	// Get temp by id
 	@GetMapping(path = "/{id}")
-	public Optional<HumanResourceEntity> getResourceById(@PathVariable Long id) {
+	public Optional<HumanResourceEntity> getResourceById(@PathVariable Integer id) {
 		// TO DO 
 		// MANAGE CASES WHERE ID NOT FOUND
 		return humanResourceService.findResourceById(id);

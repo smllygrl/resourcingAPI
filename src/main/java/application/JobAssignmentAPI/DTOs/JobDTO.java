@@ -1,8 +1,10 @@
 package application.JobAssignmentAPI.DTOs;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class CreateJobDTO {
+public class JobDTO {
+	@NotBlank
 	private String description;
 	
 	@NotNull
@@ -10,6 +12,8 @@ public class CreateJobDTO {
 	
 	@NotNull
 	private String endDate;
+	
+	private Integer assignedResource;
 
 	public String getEndDate() {
 		return endDate;
@@ -35,6 +39,12 @@ public class CreateJobDTO {
 		this.description = description;
 	}
 	
-	
+	public Integer getAssignedResource() {
+		return assignedResource;
+	}
+
+	public void setAssignedResource(Integer assignedResource) {
+		this.assignedResource = assignedResource;
+	}
 
 }

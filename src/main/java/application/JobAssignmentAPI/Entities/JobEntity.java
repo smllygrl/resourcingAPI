@@ -11,25 +11,26 @@ import javax.persistence.Table;
 public class JobEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private Integer id;
 	private String description;
 	private String startDate;
 	private String endDate;
-	private Long isAssigned;
+	private Integer assignedResource;
 	
-	public JobEntity(String description, String startDate, String endDate) {
+	public JobEntity(String description, String startDate, String endDate, Integer assignedResource) {
 		this.setDescription(description);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
+		this.setAssignedResource(assignedResource);
 	}
 	
 	public JobEntity() {}
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 	
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -52,12 +53,13 @@ public class JobEntity {
 		this.endDate = endDate;
 	}
 
-	public Long getIsAssigned() {
-		return isAssigned;
+	public Integer getAssignedResource() {
+		return assignedResource;
 	}
 
-	public void setIsAssigned(Long isAssigned) {
-		this.isAssigned = isAssigned;
+	public void setAssignedResource(Integer assignedResource) {
+		this.assignedResource = assignedResource;
 	}
+
 	
 }

@@ -23,7 +23,7 @@ public class HumanResourceService {
 		return repository.findAll();
 	}
 	
-	public Optional<HumanResourceEntity> findResourceById(Long id) {
+	public Optional<HumanResourceEntity> findResourceById(Integer id) {
 		// TO DO
 		// Remove optional once cases where ID not found are handled
 		return repository.findById(id);
