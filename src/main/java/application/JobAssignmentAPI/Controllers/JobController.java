@@ -50,23 +50,6 @@ public class JobController {
 		jobService.create(job);
 	}
 	
-	// PATCH /jobs/{id}
-	// Assigns a temp to a job if temp not busy
-	//	@PatchMapping("/{id}")
-	//	@ResponseStatus(value = HttpStatus.ACCEPTED)
-	//	public void assignJob(@PathVariable Long id, HumanResourceEntity resource) {
-	// get resource available period/s
-	// if resource not available during job period
-	// throw humanResourceBusy exception
-	// else
-	// job.isAssigned = resource;
-	
-	
-	//	GET /jobs?assigned={true|false}
-	// returns list of jobs without an assigned worker	
-	// LOGIC
-	// return list of allJobs where isAssigned = null or false or whatever
-	
 	}
 	
 	
