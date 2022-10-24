@@ -1,13 +1,10 @@
 package application.JobAssignmentAPI.Entities;
 
-import java.text.SimpleDateFormat;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 
 @Table
 @Entity
@@ -18,7 +15,7 @@ public class JobEntity {
 	private String description;
 	private String startDate;
 	private String endDate;
-	private HumanResourceEntity isAssigned;
+	private Long isAssigned;
 	
 	public JobEntity(String description, String startDate, String endDate) {
 		this.setDescription(description);
@@ -55,11 +52,11 @@ public class JobEntity {
 		this.endDate = endDate;
 	}
 
-	public HumanResourceEntity getIsAssigned() {
+	public Long getIsAssigned() {
 		return isAssigned;
 	}
 
-	public void setIsAssigned(HumanResourceEntity isAssigned) {
+	public void setIsAssigned(Long isAssigned) {
 		this.isAssigned = isAssigned;
 	}
 	

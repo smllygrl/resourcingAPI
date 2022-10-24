@@ -6,9 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.springframework.boot.autoconfigure.batch.BatchProperties.Job;
 
 @Table
 @Entity
@@ -18,7 +17,8 @@ public class HumanResourceEntity {
 	private Long id;
 	private String firstName;
 	private String lastName;
-	private List<Job> jobs;
+	@OneToMany(targetEntity=JobEntity.class)
+	private List<JobEntity> jobs;
 	
 	public HumanResourceEntity(String firstName, String lastName) {
 		this.setFirstName(firstName);
@@ -51,11 +51,13 @@ public class HumanResourceEntity {
 		this.lastName = lastName;
 	}
 
-	public List<Job> getJobs() {
+	public List<JobEntity> getJobs() {
 		return jobs;
 	}
 
-	public void setJobs(List<Job> jobs) {
+	public void setJobs(List<JobEntity> jobs) {
 		this.jobs = jobs;
 	}
+
+
 }

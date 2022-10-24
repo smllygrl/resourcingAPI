@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import application.JobAssignmentAPI.DTOs.HumanResourceDTO;
 import application.JobAssignmentAPI.Entities.HumanResourceEntity;
-import application.JobAssignmentAPI.Entities.JobEntity;
 import application.JobAssignmentAPI.Repositories.HumanResourceRepository;
 
 import java.util.List;
