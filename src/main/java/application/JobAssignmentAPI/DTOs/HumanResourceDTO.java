@@ -1,4 +1,4 @@
-package application.JobAssignmentAPI;
+package application.JobAssignmentAPI.DTOs;
 
 import javax.validation.constraints.NotNull;
 
