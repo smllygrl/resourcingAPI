@@ -1,5 +1,7 @@
 package application.JobAssignmentAPI.DTOs;
 
+import java.util.List;
+
 import javax.validation.constraints.NotNull;
 
 public class HumanResourceReturnDTO {
