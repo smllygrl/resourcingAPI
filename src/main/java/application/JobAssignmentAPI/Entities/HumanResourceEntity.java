@@ -17,7 +17,9 @@ public class HumanResourceEntity {
 	private Integer id;
 	private String firstName;
 	private String lastName;
-	@OneToMany(targetEntity=JobEntity.class)
+	
+	// One resource can have many jobs
+	@OneToMany(mappedBy="humanResource")
 	private List<JobEntity> jobs;
 	
 	public HumanResourceEntity(String firstName, String lastName) {

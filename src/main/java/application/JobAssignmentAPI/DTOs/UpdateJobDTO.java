@@ -1,14 +1,19 @@
 package application.JobAssignmentAPI.DTOs;
 
+import java.time.LocalDate;
+import java.util.Date;
+
+import application.JobAssignmentAPI.Entities.HumanResourceEntity;
+
 public class UpdateJobDTO {
 	
 	private String description;
 	
-	private String startDate;
+	private LocalDate startDate;
 	
-	private String endDate;
+	private LocalDate endDate;
 	
-	private Integer assignedResource;
+	private Integer resourceId;
 
 	public String getDescription() {
 		return description;
@@ -18,30 +23,31 @@ public class UpdateJobDTO {
 		this.description = description;
 	}
 
-	public String getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
 
-	public String getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
-	public Integer getAssignedResource() {
-		return assignedResource;
+	public Integer getResourceId() {
+		return resourceId;
 	}
 
-	public void setAssignedResource(Integer assignedResource) {
-		this.assignedResource = assignedResource;
+	public void setResourceId(Integer resourceId) {
+		this.resourceId = resourceId;
 	}
-
+	
+	
 
 
 

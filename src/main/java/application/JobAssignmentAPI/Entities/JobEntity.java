@@ -1,10 +1,18 @@
 package application.JobAssignmentAPI.Entities;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Table
 @Entity
@@ -13,15 +21,20 @@ public class JobEntity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String description;
-	private String startDate;
-	private String endDate;
-	private Integer assignedResource;
+	private LocalDate startDate;
+	private LocalDate endDate;
 	
-	public JobEntity(String description, String startDate, String endDate, Integer assignedResource) {
+	// One job can have one resource
+	@ManyToOne
+	@JoinColumn(name = "human_resource_id")
+	private HumanResourceEntity humanResource;
+
+	
+	public JobEntity(String description, LocalDate startDate, LocalDate endDate, HumanResourceEntity humanResource) {
 		this.setDescription(description);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
-		this.setAssignedResource(assignedResource);
+		this.setHumanResource(humanResource);
 	}
 	
 	public JobEntity() {}
@@ -30,35 +43,31 @@ public class JobEntity {
 		return id;
 	}
 	
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
 	public String getDescription() {
 		return description;
 	}
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getStartDate() {
+	public LocalDate getStartDate() {
 		return startDate;
 	}
-	public void setStartDate(String startDate) {
+	public void setStartDate(LocalDate startDate) {
 		this.startDate = startDate;
 	}
-	public String getEndDate() {
+	public LocalDate getEndDate() {
 		return endDate;
 	}
-	public void setEndDate(String endDate) {
+	public void setEndDate(LocalDate endDate) {
 		this.endDate = endDate;
 	}
 
-	public Integer getAssignedResource() {
-		return assignedResource;
+	public HumanResourceEntity getHumanResource() {
+		return humanResource;
 	}
 
-	public void setAssignedResource(Integer assignedResource) {
-		this.assignedResource = assignedResource;
+	public void setHumanResource(HumanResourceEntity assignedResource) {
+		this.humanResource = assignedResource;
 	}
 
 	

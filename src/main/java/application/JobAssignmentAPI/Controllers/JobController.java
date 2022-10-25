@@ -54,9 +54,14 @@ public class JobController {
 	@ResponseStatus(value = HttpStatus.OK)
 	public void assignJob(@PathVariable Integer jobId, @RequestBody UpdateJobDTO dataFromUser) {
 		jobService.updateJob(jobId, dataFromUser);
-		
 	}
 	
+	// GET jobs?assigned={true|false}
+	@GetMapping(path = "?assigned={booleanValue}")
+	@ResponseStatus(value = HttpStatus.OK)
+	public void queryAssigned(@PathVariable Boolean booleanValue) {
+		jobService.queryAssignedJobs(booleanValue);
 	}
 	
+}
 	

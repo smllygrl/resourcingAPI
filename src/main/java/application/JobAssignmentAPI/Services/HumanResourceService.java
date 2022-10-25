@@ -17,21 +17,21 @@ import java.util.Optional;
 public class HumanResourceService {
 	
 	@Autowired
-	private HumanResourceRepository repository;
+	HumanResourceRepository resourcesRepository;
 	
 	public List<HumanResourceEntity> allResources() { 
-		return repository.findAll();
+		return resourcesRepository.findAll();
 	}
 	
 	public Optional<HumanResourceEntity> findResourceById(Integer id) {
 		// TO DO
 		// Remove optional once cases where ID not found are handled
-		return repository.findById(id);
+		return resourcesRepository.findById(id);
 	}
 	
 	public void create(HumanResourceDTO humanResource) {
 		HumanResourceEntity human = new HumanResourceEntity(humanResource.getFirstName(), humanResource.getLastName());
-		repository.save(human);
+		resourcesRepository.save(human);
 	}
 	
 //	public boolean isAvailable(JobEntity newJob, HumanResource human) {
