@@ -1,19 +1,53 @@
 package application.JobAssignmentAPI.DTOs;
 
-import java.util.List;
-
-import javax.validation.constraints.NotNull;
-
 public class HumanResourceReturnDTO {
-	@NotNull
+	
 	private Integer id;
 	
-	@NotNull
 	private String firstName;
 	
-	@NotNull
 	private String lastName;
 	
-	private List<JobReturnDTO> jobs;
+//	private List<JobReturnDTO> jobs;
+	
+	public HumanResourceReturnDTO() {};
+	
+	public HumanResourceReturnDTO(Integer id, String firstName, String lastName) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+//	public List<JobReturnDTO> getJobs() {
+//		return jobs;
+//	}
+//
+//	public void setJobs(List<JobReturnDTO> jobs) {
+//		this.jobs = jobs;
+//	}
 
 }

@@ -1,5 +1,6 @@
 package application.JobAssignmentAPI.Controllers;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import application.JobAssignmentAPI.DTOs.JobDTO;
+import application.JobAssignmentAPI.DTOs.JobReturnDTO;
 import application.JobAssignmentAPI.DTOs.UpdateJobDTO;
 import application.JobAssignmentAPI.Entities.JobEntity;
 import application.JobAssignmentAPI.Services.JobService;
@@ -59,8 +61,8 @@ public class JobController {
 	// GET jobs?assigned={true|false}
 	@GetMapping(path = "?assigned={booleanValue}")
 	@ResponseStatus(value = HttpStatus.OK)
-	public void queryAssigned(@PathVariable Boolean booleanValue) {
-		jobService.queryAssignedJobs(booleanValue);
+	public List<JobReturnDTO> queryAssigned(@PathVariable Boolean booleanValue) {
+		return jobService.queryAssignedJobs(booleanValue);
 	}
 	
 }

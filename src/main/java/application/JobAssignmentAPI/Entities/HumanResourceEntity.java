@@ -3,11 +3,14 @@ package application.JobAssignmentAPI.Entities;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Table
 @Entity
@@ -19,7 +22,8 @@ public class HumanResourceEntity {
 	private String lastName;
 	
 	// One resource can have many jobs
-	@OneToMany(mappedBy="humanResource")
+	@OneToMany(mappedBy="humanResource", fetch = FetchType.LAZY)
+	@JsonBackReference
 	private List<JobEntity> jobs;
 	
 	public HumanResourceEntity(String firstName, String lastName) {

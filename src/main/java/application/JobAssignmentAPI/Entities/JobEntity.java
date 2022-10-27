@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +14,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Table
 @Entity
@@ -25,7 +28,8 @@ public class JobEntity {
 	private LocalDate endDate;
 	
 	// One job can have one resource
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonBackReference
 	@JoinColumn(name = "human_resource_id")
 	private HumanResourceEntity humanResource;
 

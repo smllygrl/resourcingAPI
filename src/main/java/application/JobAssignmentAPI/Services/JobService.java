@@ -8,7 +8,9 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import application.JobAssignmentAPI.DTOs.HumanResourceReturnDTO;
 import application.JobAssignmentAPI.DTOs.JobDTO;
+import application.JobAssignmentAPI.DTOs.JobReturnDTO;
 import application.JobAssignmentAPI.DTOs.UpdateJobDTO;
 import application.JobAssignmentAPI.Entities.HumanResourceEntity;
 import application.JobAssignmentAPI.Entities.JobEntity;
@@ -35,6 +37,7 @@ public class JobService {
 		// job entity return dto
 		// shape to display back to client
 		return repository.findById(id);
+		// Why does this work without a repository method?
 	}
 	
 	// JobDTO comes from user (eg. JSON in Postman)
@@ -68,32 +71,32 @@ public class JobService {
 	}
 	
 	// The params here represent the query, whether they are looking for assigned (true) or unassigned (false) jobs
-	@SuppressWarnings("null")
-	public List<JobEntity> queryAssignedJobs (Boolean queryValue) {
-		// Create an empty list
-		List<JobEntity> allJobs = getAllJobs();
-		List<JobEntity> returnList = null;
-		JobEntity jobToCheck;
-		Boolean isAssigned;
-		
-		for (int i = 0; i < allJobs.size(); i++) {
-			
-			jobToCheck = allJobs.get(i);
-			
-			if (jobToCheck.getHumanResource() != null) {
-				isAssigned = true;
-			} else {
-				isAssigned = false;
+	public List<JobReturnDTO> queryAssignedJobs (Boolean queryValue) {
+		// Get a list of assigned or unassigned jobs
+		// !! Below is recursive as it return the temps and their jobs and then the jobs and their temps
+		List<JobEntity> jobs = queryValue ? repository.getAllAssignedJobs() : repository.getAllUnassignedJobs();
+		// Instantiate a List of return DTOs
+		List<JobReturnDTO> returnList = null;
+		// If there are jobs that match the assigned/ unassigned query
+		if (jobs != null) {
+			// Instantiate a JobEntity for destructuring
+			JobEntity beingProcessed;
+			for(int i = 0; i < jobs.size(); i++) {
+				// Grab a job from the list the initial query returned
+				beingProcessed = jobs.get(i);
+				// Destructure to create return DTO
+				JobReturnDTO jobForReturn = new JobReturnDTO(beingProcessed.getId(), beingProcessed.getDescription(), beingProcessed.getStartDate(), beingProcessed.getEndDate());
+				// If the job has a human assigned to it
+				if (beingProcessed.getHumanResource() != null) {
+					HumanResourceEntity resourceBeingProcessed = beingProcessed.getHumanResource();
+					HumanResourceReturnDTO resourceForReturn = new HumanResourceReturnDTO(resourceBeingProcessed.getId(),resourceBeingProcessed.getFirstName(), resourceBeingProcessed.getLastName() );
+					jobForReturn.setAssignedResource(resourceForReturn);
+				}
+				returnList.add(jobForReturn);
 			}
-			
-			if (isAssigned == queryValue) {
-				returnList.add(jobToCheck);
-			}
-	
 		}
 		
 		return returnList;
-		
 	}
 		
 

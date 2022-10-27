@@ -14,12 +14,14 @@ import application.JobAssignmentAPI.Entities.JobEntity;
 public interface JobRepository extends JpaRepository<JobEntity, Integer> {
 	
 	// GET /jobs?assigned=false
-	@Query(value = "SELECT job_entity FROM resourcing WHERE is_assigned IS NULL", nativeQuery = true)
+	// Returns a list of jobs where there is no human resource assigned
+	@Query(value = "SELECT * FROM resourcing.job_entity where human_resource_id IS NULL", nativeQuery = true)
 	List<JobEntity> getAllUnassignedJobs();
 	
 	
 	// GET /jobs?assigned=true
-	@Query(value = "SELECT job_entity FROM reosourcing WHERE is_assigned IS NOT NULL", nativeQuery = true)
+	// Returns a list of jobs where there is no human resource assigned
+	@Query(value = "SELECT * FROM resourcing.job_entity where human_resource_id IS NOT NULL", nativeQuery = true)
 	List<JobEntity> getAllAssignedJobs();
 
 }

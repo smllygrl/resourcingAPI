@@ -8,7 +8,7 @@ public class HumanResourceDTO {
 	
 	@NotNull
 	private String lastName;
-
+	
 	public String getFirstName() {
 		return firstName;
 	}
