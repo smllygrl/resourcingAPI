@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Table
 @Entity
-public class JobEntity {
+public class Job {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -28,20 +28,19 @@ public class JobEntity {
 	private LocalDate endDate;
 	
 	// One job can have one resource
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonBackReference
+	@ManyToOne
+//	@JsonBackReference
 	@JoinColumn(name = "human_resource_id")
-	private HumanResourceEntity humanResource;
-
+	private HumanResource humanResource;
 	
-	public JobEntity(String description, LocalDate startDate, LocalDate endDate, HumanResourceEntity humanResource) {
+	public Job(String description, LocalDate startDate, LocalDate endDate, HumanResource humanResource) {
 		this.setDescription(description);
 		this.setStartDate(startDate);
 		this.setEndDate(endDate);
 		this.setHumanResource(humanResource);
 	}
 	
-	public JobEntity() {}
+	public Job() {}
 	
 	public Integer getId() {
 		return id;
@@ -66,12 +65,12 @@ public class JobEntity {
 		this.endDate = endDate;
 	}
 
-	public HumanResourceEntity getHumanResource() {
+	public HumanResource getHumanResource() {
 		return humanResource;
 	}
 
-	public void setHumanResource(HumanResourceEntity assignedResource) {
-		this.humanResource = assignedResource;
+	public void setHumanResource(HumanResource humanResource) {
+		this.humanResource = humanResource;
 	}
 
 	

@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import application.JobAssignmentAPI.Entities.HumanResourceEntity;
+import application.JobAssignmentAPI.Entities.HumanResource;
 
 public class JobDTO {
 	@NotBlank
@@ -20,7 +20,7 @@ public class JobDTO {
 	@NotNull
 	private LocalDate endDate;
 	
-	private HumanResourceEntity assignedResource;
+	private HumanResource humanResource;
 	
 	public LocalDate getStartDate() {
 		return startDate;
@@ -45,13 +45,13 @@ public class JobDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	public HumanResourceEntity getAssignedResource() {
-		return assignedResource;
+
+	public HumanResource getHumanResource() {
+		return humanResource;
 	}
 
-	public void setAssignedResource(HumanResourceEntity assignedResource) {
-		this.assignedResource = assignedResource;
+	public void setHumanResource(HumanResource humanResource) {
+		this.humanResource = humanResource;
 	}
 
 }

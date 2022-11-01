@@ -1,9 +1,6 @@
 package application.JobAssignmentAPI.DTOs;
 
 import java.time.LocalDate;
-import java.util.Date;
-
-import application.JobAssignmentAPI.Entities.HumanResourceEntity;
 
 public class UpdateJobDTO {
 	

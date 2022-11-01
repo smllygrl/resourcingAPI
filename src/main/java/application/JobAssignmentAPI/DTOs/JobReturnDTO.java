@@ -15,7 +15,7 @@ public class JobReturnDTO {
 	
 	private LocalDate endDate;
 	
-	private HumanResourceReturnDTO assignedResource;
+	private String resourceName;
 	
 	public JobReturnDTO() {
 	}
@@ -25,16 +25,9 @@ public class JobReturnDTO {
 		this.description = description;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		this.assignedResource = null;
+		this.setResourceName(null);
 	}
 
-	public HumanResourceReturnDTO getAssignedResource() {
-		return assignedResource;
-	}
-
-	public void setAssignedResource(HumanResourceReturnDTO assignedResource) {
-		this.assignedResource = assignedResource;
-	}
 
 	public LocalDate getEndDate() {
 		return endDate;
@@ -66,6 +59,14 @@ public class JobReturnDTO {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getResourceName() {
+		return resourceName;
+	}
+
+	public void setResourceName(String resourceName) {
+		this.resourceName = resourceName;
 	}
 
 }

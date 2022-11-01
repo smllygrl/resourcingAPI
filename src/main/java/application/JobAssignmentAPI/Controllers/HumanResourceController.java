@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import application.JobAssignmentAPI.DTOs.HumanResourceDTO;
-import application.JobAssignmentAPI.Entities.HumanResourceEntity;
+import application.JobAssignmentAPI.Entities.HumanResource;
 import application.JobAssignmentAPI.Services.HumanResourceService;
 
 @RestController
@@ -29,14 +29,14 @@ public class HumanResourceController {
 	// List all temps
 	@GetMapping
 	
-	public List<HumanResourceEntity> getHumanResources() {
+	public List<HumanResource> getHumanResources() {
 		return humanResourceService.allResources();
 	}
 	
 	// GET /resources/id
 	// Get temp by id
 	@GetMapping(path = "/{id}")
-	public Optional<HumanResourceEntity> getResourceById(@PathVariable Integer id) {
+	public Optional<HumanResource> getResourceById(@PathVariable Integer id) {
 		// TO DO 
 		// MANAGE CASES WHERE ID NOT FOUND
 		return humanResourceService.findResourceById(id);
@@ -50,12 +50,13 @@ public class HumanResourceController {
 	public void saveHumanResource(@Valid @RequestBody HumanResourceDTO humanResource) {
 		humanResourceService.create(humanResource);
 	}
-	
-	// @Query (value = "SELECT resource FROM resources")
+
 	// GET /resources?jobId={jobId}
 	// List all available resources for a given period of time
-	// getAllAvailble
-	// humanResourceService.allResources()
-	// 
+	@GetMapping(path = "?jobId={jobId}")
+	public List<HumanResource> getAvailableResources(Integer jobId) {
+		return humanResourceService.allAvailable(jobId);
+	}
+
 
 }

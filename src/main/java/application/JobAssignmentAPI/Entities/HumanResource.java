@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Table
 @Entity
-public class HumanResourceEntity {
+public class HumanResource {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
@@ -22,16 +22,16 @@ public class HumanResourceEntity {
 	private String lastName;
 	
 	// One resource can have many jobs
-	@OneToMany(mappedBy="humanResource", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy="humanResource")
 	@JsonBackReference
-	private List<JobEntity> jobs;
+	private List<Job> jobs;
 	
-	public HumanResourceEntity(String firstName, String lastName) {
+	public HumanResource(String firstName, String lastName) {
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 	}
 	
-	public HumanResourceEntity() {}
+	public HumanResource() {}
 	
 	public Integer getId() {
 		return id;
@@ -56,12 +56,17 @@ public class HumanResourceEntity {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+//	public String getFullName() {
+//		String fullName = getFirstName() + " " + getLastName();
+//		return fullName;
+//	}
 
-	public List<JobEntity> getJobs() {
+	public List<Job> getJobs() {
 		return jobs;
 	}
 
-	public void setJobs(List<JobEntity> jobs) {
+	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
 	}
 
