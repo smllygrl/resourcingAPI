@@ -1,7 +1,7 @@
 # Job Assignment API
 
 ## Summary
-Your task is to build a Resourcing API using the Java Spring Boot framework, that allows consumers to assign temps to jobs.
+This is Resourcing API using the Java Spring Boot framework. It allows users to create jobs, human resources, and assign said resources to jobs.
 
 ## Endpoints
 | Endpoint | Method | Description                   | Status Code | Complete |
