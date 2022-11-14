@@ -19,36 +19,6 @@ Your task is to build a Resourcing API using the Java Spring Boot framework, tha
 | /temps  | POST    | Create temp; (requires a body) | 201 CREATED or 400 BAD REQUEST | Y |
 | /resources/{resource_id}  | DELETE    | Delete temp by id  | 204 NO CONTENT or 404 NOT FOUND | Y |
 
-```
-{
-	id: ...,
-	name: ...,
-	startDate: ...,
-	endDate: ...,
-	temp: {
-		id: ...,
-		firstName: ...,
-		lastName: ...,
-	} // temp can also be null if a temp hasn't been assigned to the job
-}
-```
-
-// GET /temps/{id}
-
-```
-{
-	id: ...,
-	firstName: ...,
-	lastName: ...,
-	jobs: [{
-		id: ...,
-		name: ...,
-		startDate: ...,
-		endDate: ...,
-	}, ...] // can be empty if temp hasn't been assigned to jobs
-}
-```
-
 ##### Assumptions
 
 Temps can only have one job at a time (can’t be doing 2 jobs on the same date)
@@ -56,16 +26,3 @@ Temps can only have one job at a time (can’t be doing 2 jobs on the same date)
 Temps can have many jobs, and job can have 1 temp assigned
 
 Should be able to assign existing temps to jobs via POST /jobs & PATCH /jobs/{id}
-
-You must use a relational database
-
-Bonus
-
-Temps should be able to manage other temps (will require an additional field)
-
-When you request a temp record it should display the reports of that temp
-
-Should be represented in the database as a nested set
-
-GET /temps/tree - should display the whole tree of temps
-
