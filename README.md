@@ -5,27 +5,21 @@ Your task is to build a Resourcing API using the Java Spring Boot framework, tha
 
 ### Endpoints
 
-POST /jobs - Creates a job
-
-PATCH /jobs/{id} - Updates job, endpoint should be used to assign temps to jobs
-
-GET /jobs - Fetch all jobs
-
-GET /jobs?assigned={true|false} - Filter by whether a job is assigned to a temp or not
-
-GET /jobs/{id} - (id, name, tempId, startDate, endDate)
-
-POST /temps - Create a temp
-
-GET /temps - List all temps
-
-GET /temps?jobId={jobId} - List temps that are available for a job based on the jobs date range
-
-GET /temps/{id} - get temp by id (should also display jobs they’ve been assigned to)
-
-Example Payloads
-
-// GET /jobs/{id}
+## Endpoints
+| Endpoint | Method | Description                   | Status Code |
+| -------- | ------ | ----------------------------- | ----------- |
+| /        | GET    | Health Check returns “Hello World!!” | 200 OK |
+| /jobs    | GET    | Return all jobs. Returns JSON array of results. | 200 OK or 204 NO CONTENT |
+| /jobs?assigned={TRUE\|FALSE} | GET | Return all jobs that have been assigned. | 200 OK or 404 NOT FOUND |
+| /jobs/{job_id} | GET    | Returns job associated with job id.  | 200 OK or 404 NOT FOUND |
+| /jobs    | POST   | Create job; (requires a body)        | 201 CREATED or 400 BAD REQUEST |
+| /jobs/{job_id}  | PATCH | Update start date, end date or Temp assigned to job (requires a body) | 200 OK or 400 BAD REQUEST |
+| /jobs/{job_id} | DELETE | Delete job by id         | 204 NO CONTENT or 404 NOT FOUND |
+| /resources   | GET    | Return all temps in a JSON array. | 200 OK or 204 NO CONTENT |
+| /resources?jobId={job_id} | GET    | Return all temps available based on specified job's date range. Returns JSON array of results. | 200 OK or 204 NO CONTENT or 404 NOT FOUND |
+| /resources/{resource_id} | GET    | Returns temp associated with temp id. | 200 OK or 404 NOT FOUND |
+| /temps  | POST    | Create temp; (requires a body) | 201 CREATED or 400 BAD REQUEST |
+| /resources/{resource_id}  | DELETE    | Delete temp by id  | 204 NO CONTENT or 404 NOT FOUND |
 
 ```
 {
