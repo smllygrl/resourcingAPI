@@ -40,7 +40,9 @@ One way I tried to remediate this was through using a DTO which did not return t
 private List<Job> jobs;
 ```
 This annotation is used to display objects with a parent child relationship.
+
 @JsonBackReference = refers to a child object (omitted from serialisation)
+
 @JsonManagedReference = refers to a parent object (serialised normally)
 
 
