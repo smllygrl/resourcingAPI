@@ -26,3 +26,21 @@ This is a Resourcing API using the Java Spring Boot framework. It allows users t
 | Resources can only have one job at a time (can’t be doing 2 jobs on the same date) | - Ensure logic is present to check if resource is availble within the time frame of a proposed job <br> - Ensure the type associated with start date and end date of a job is compatible with these time based checks <br> - Unit tests to confirm functionality of logic when assigning a job | N |
 | Resources can have many jobs, and job can have 1 resource assigned | - Ensure entity of resource can hold many jobs eg. List<Jobs> <br> - Ensure entity of job can hold only 1 resource (id? name?) | N |
 | Should be able to assign existing resources to jobs via POST /jobs & PATCH /jobs/{id} | - Ensure DTO for POST /jobs has space & functionality for resource <br> - Ensure DTO for PATCH /jobs/{id} updates only the resource | Y |
+
+## Challenges and Solutions
+
+##### CHALLENGE: Entity Relationship Rescursive Serialisation Errors
+During the development of the endpoint /jobs?assigned={TRUE\|FALSE}, I experienced consistent infinte loops/ stack overflows. This is because the list of jobs that was returned also returned the resource assigned to the job, and then the jobs assigned to that resources, and then the resource assigned to the job etc.
+
+One way I tried to remediate this was through using a DTO which did not return the resource of the job on return in my service layer. However, due to the return type in my controller, this was not successful.
+
+##### SOLUTION: FasterXML Annotation
+```
+@JsonBackReference
+private List<Job> jobs;
+```
+This annotation is used to display objects with a parent child relationship.
+@JsonBackReference = refers to a child object (omitted from serialisation)
+@JsonManagedReference = refers to a parent object (serialised normally)
+
+
