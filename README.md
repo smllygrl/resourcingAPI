@@ -1,7 +1,7 @@
 # Job Assignment API
 
 ## Summary
-This is Resourcing API using the Java Spring Boot framework. It allows users to create jobs, human resources, and assign said resources to jobs.
+This is a Resourcing API using the Java Spring Boot framework. It allows users to create jobs, human resources, and assign said resources to jobs.
 
 ## Endpoints
 | Endpoint | Method | Description                   | Status Code | Complete |
@@ -23,6 +23,6 @@ This is Resourcing API using the Java Spring Boot framework. It allows users to 
 
 | Assumption | Action | Complete |
 | ---------- | ------ | -------- |
-| Temps can only have one job at a time (can’t be doing 2 jobs on the same date) | - Ensure when assigning job, logic exists <br> - Second point | N |
-| Temps can have many jobs, and job can have 1 temp assigned | - First Action <br> - Second Action | N |
-| Should be able to assign existing temps to jobs via POST /jobs & PATCH /jobs/{id} | - First Actions <br> - Second action | Y |
+| Resources can only have one job at a time (can’t be doing 2 jobs on the same date) | - Ensure logic is present to check if resource is availble within the time frame of a proposed job <br> - Ensure the type associated with start date and end date of a job is compatible with these time based checks <br> - Unit tests to confirm functionality of logic when assigning a job | N |
+| Resources can have many jobs, and job can have 1 resource assigned | - Ensure entity of resource can hold many jobs eg. List<Jobs> <br> - Ensure entity of job can hold only 1 resource (id? name?) | N |
+| Should be able to assign existing resources to jobs via POST /jobs & PATCH /jobs/{id} | - Ensure DTO for POST /jobs has space & functionality for resource <br> - Ensure DTO for PATCH /jobs/{id} updates only the resource | Y |
