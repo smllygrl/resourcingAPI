@@ -19,10 +19,10 @@ This is Resourcing API using the Java Spring Boot framework. It allows users to 
 | /temps  | POST    | Create temp; (requires a body) | 201 CREATED or 400 BAD REQUEST | Y |
 | /resources/{resource_id}  | DELETE    | Delete temp by id  | 204 NO CONTENT or 404 NOT FOUND | Y |
 
-##### Assumptions
+## Assumptions and Actions
 
-Temps can only have one job at a time (can’t be doing 2 jobs on the same date)
-
-Temps can have many jobs, and job can have 1 temp assigned
-
-Should be able to assign existing temps to jobs via POST /jobs & PATCH /jobs/{id}
+| Assumption | Action | Complete |
+| ---------- | ------ | -------- |
+| Temps can only have one job at a time (can’t be doing 2 jobs on the same date) | - Ensure when assigning job, logic exists <br> - Second point | N |
+| Temps can have many jobs, and job can have 1 temp assigned | - First Action <br> - Second Action | N |
+| Should be able to assign existing temps to jobs via POST /jobs & PATCH /jobs/{id} | - First Actions <br> - Second action | Y |
